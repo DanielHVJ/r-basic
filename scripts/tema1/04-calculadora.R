@@ -19,8 +19,8 @@
 725%%7
 # D = d * q + r
 # r = D - d * q
-# q = D %/% d
-# x = D %% d 
+# q = D %/% d  # entero de la division
+# x = D %% d  # resto de divisison
 725 - 103*7
 
 pi
@@ -69,7 +69,7 @@ factorial(4)
 
 factorial(0)
 
-choose(5, 3)
+choose(5, 3) # combinatorio
 
 choose(3,5)
 
