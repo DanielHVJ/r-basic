@@ -114,6 +114,8 @@ print(pi, 22)
 #3.141592653589793115998
 #3.141592653589793238462
 
+# la precision de R es de 16 digitos
+
 round(1.25,1)
 round(1.35,1)
 round(sqrt(2),0)
@@ -152,6 +154,8 @@ x = x^2
 
 x = sqrt(x)
 
+# FUNCIONES
+
 ## Función f(x) = x^3 - (3^x)* sen(x)
 f = function(x) {
   x^3 - (3^x) * sin(x)
@@ -164,17 +168,20 @@ f(pi/2)
 suma1 <- function(t){
   t + 1
 }
+
 suma1(6)
 suma1(-5)
 
 product <- function(x, y){
   x*y
 }
+
 product(5,7)
 
 g <- function(x,y,z) {
   exp(x^2 + y^2) * sin(z)
 }
+
 g(1, 2, 3)
 g(1, -1, pi)
 
@@ -183,8 +190,7 @@ suma5 <- function(numero){
   numero = suma1(numero);
   numero = suma1(numero);
   numero = suma1(numero);
-  suma1(numero)
-}
+  suma1(numero)}
 
 suma5(3)
 
@@ -195,6 +201,9 @@ rm(product)
 ls()
 
 rm(list = ls())
+
+
+## 3 . NUMEROS IMAGINARIOS  
 
 class(3+2i)
 

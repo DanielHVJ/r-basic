@@ -13,3 +13,5 @@ opBasic = function(a,b){
   print(paste(sprintf("%i : %i = ",b,a),b%/%a))
   print(paste("con resto ",b%%a))
 }
+
+opBasic(5,8)
