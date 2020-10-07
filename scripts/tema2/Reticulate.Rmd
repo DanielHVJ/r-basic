@@ -1,0 +1,67 @@
+---
+title: "R & Python"
+author: "Daniel"
+date: "7/10/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(reticulate)
+use_python('C:/Newprograms/Anaconda/python.exe')
+
+os <- import('os')
+os$listdir(".")
+```
+
+
+```{r}
+np = import('numpy', convert = F)
+
+x = np$array(c(1:5))
+s = x$cumsum()
+py_to_r(s)
+```
+
+```{r}
+help("py_to_r")
+```
+
+```{r}
+dat = iris
+dat_py = r_to_py(dat)
+
+```
+
+
+```{python}
+
+import numpy as np
+import pandas as pd
+
+r.dat_py.head()
+```
+
+```{r}
+library(Matrix)
+
+N = 6
+s_m = sparseMatrix(i = sample(N, N, replace=F),
+                   j = sample(N, N, replace=F),
+                   x = runif(N), dims=c(N, N))
+
+s_m
+
+sm_p = r_to_py(s_m)
+```
+
+
+```{python}
+r.sm_p
+```
+
+
+
