@@ -65,6 +65,15 @@ Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función
 </div>
 
 
+### Solución primer ejercicio
+
+```{r}
+vec = c(16,0,1,20,158,48,5,45,23,11,10,5)
+
+```
+
+
+
 
 ## Progresiones y Secuencias
 
@@ -91,6 +100,19 @@ $$a_n = a_1 + (n-1)\cdot d$$
 <div class = "aligncenter">
 ![](Imgs/studytime.png)
 </div>
+
+
+### Soluciones 2 Ejercicio
+
+```{r}
+seq(1:20)
+seq(2, by=2, length.out = 20)
+seq(1,20, by =2)
+
+print(seq(17,98, length.out=30),4)
+
+
+```
 
 
 ## Funciones
@@ -128,6 +150,10 @@ v = c(1,2,3,4,5,6)
 sapply(v, FUN = cuadrado)
 mean(v)
 cumsum(v)
+
+sapply(vec, cuadrado)
+mean(vec)
+cumprod(vec)
 ```
 
 
@@ -140,6 +166,10 @@ cumsum(v)
 v = c(1,7,5,2,4,6,3)
 sort(v)
 rev(v)
+
+cumprod(sort(vec, method='radix'))
+
+?sort
 ```
 
 ## Orden{.exercise}
@@ -196,6 +226,11 @@ v[v != 19 & v>15]
 - ```which.max(x)```: nos da la primera posición en la que el vector $x$ toma su valor máximo
 - ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
 
+```{r}
+vec[which(vec>5)]
+vec[which(vec>5 | vec%/%2==0)]
+vec[which(vec%/%2==0)]
+```
 
 # Factores
 
