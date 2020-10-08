@@ -1,0 +1,83 @@
+---
+title: "T3M"
+author: "Daniel"
+date: "8/10/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+A = matrix(c(1,2,3,4,4,3,2,1,0,1,0,2,3,0,4,0), ncol = 4)
+
+dim(A)
+
+B = matrix(c(4,3,2,1,0,3,0,4,1,2,3,4,0,1,0,2), ncol = 4)
+
+B
+```
+
+```{r}
+A %*% B ->AB
+B %*% A ->BA
+
+t(A %*% B)
+
+t(B) %*% A
+
+solve(A %*% B)
+
+solve(A) %*% t(B)
+
+```
+
+
+Producto de A * B
+```{r}
+AB
+```
+
+Producto de B * A
+```{r}
+BA 
+```
+
+
+### Pregunta Número 2
+
+```{r}
+dni = c(5, 4, 2, 0, 1, 5, 6, 7)
+
+```
+
+Producto de DNI
+```{r}
+dni^2
+```
+
+Raiz cuadrada de DNI
+```{r}
+sqrt(dni)
+```
+
+Cumsum de DNI
+```{r}
+cumsum(dni)
+```
+
+
+### Pregunta Número 3
+
+```{r}
+nombre = c('D','A','N','I','E','L','V','E','D','I','A','J')
+f_n = nombre[1:6]
+l_n = nombre[7:12]
+
+ordered(f_n) -> first
+ordered(l_n) -> last
+
+MN = matrix(nombre, nrow = 2, byrow = T)
+MN
+```

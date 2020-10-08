@@ -230,6 +230,11 @@ v[v != 19 & v>15]
 vec[which(vec>5)]
 vec[which(vec>5 | vec%/%2==0)]
 vec[which(vec%/%2==0)]
+
+x = c(1,5,2,7,NA, NA, 7,89, NA,9)
+
+sum(x, na.rm = T)
+cumsum(na.omit(x))
 ```
 
 # Factores
@@ -264,9 +269,15 @@ vec[which(vec%/%2==0)]
 fac = factor(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
        levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
 fac
+
 facOrd = ordered(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
        levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
 facOrd
+
+levels(fac) = c('suspenso', 'aprobado', 'notable', 'excelente')
+
+fac
+
 ```
 
 
@@ -293,6 +304,10 @@ facOrd
 x = c(1,-2,3,4,-5,6,7,-8,-9,0)
 miLista = list(nombre = "X", vector = x, media = mean(x), sumas = cumsum(x))
 miLista
+
+miLista$vector
+
+miLista[[4]]+3
 ```
 
 
@@ -302,7 +317,6 @@ miLista
 str(miLista)
 names(miLista)
 ```
-
 
 
 
@@ -332,6 +346,12 @@ $$\begin{pmatrix}
 3 & 6 & 9 & 12
 \end{pmatrix}$$
 <!--matrix(vec, ncol = 4)-->
+
+
+```{r}
+m = matrix(1:12, nrow=3)
+m
+```
 
 
 ## Cómo construirlas
@@ -400,7 +420,7 @@ diag(A)
 ## Función apply()
 
 ```{r}
-apply(A, MARGIN = c(1,2), FUN = cuadrado)
+apply(A, MARGIN = c(1,2), FUN = function(x){sqrt(sum(x^2))})
 apply(A, MARGIN = 1, FUN = sum)
 apply(A, MARGIN = 2, FUN = sum)
 ```
@@ -438,6 +458,22 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
 ![](Imgs/studytime.png)
 </div>
 
+### Ejercicios
+
+```{r}
+A = matrix(c(2,0,2,1,2,3,0,1,3), nrow= 3, byrow=T)
+A
+
+B = matrix(c(3,2,1,1,0,0,1,1,1), nrow= 3, byrow=T)
+B
+
+A*B
+
+A%*%A
+B%*%B%*%B
+
+A^2
+```
 
 ## Operaciones			
 			
@@ -460,6 +496,9 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
 ```{r}
 M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
 eigen(M)
+
+eigen(M)$vectors %*% diag(eigen(M)$values) %*% solve(eigen(M)$vector)
+
 ```
 
 
