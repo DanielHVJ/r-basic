@@ -1,0 +1,91 @@
+---
+title: "Graph_RT4"
+author: "Daniel"
+date: "9/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Ejercicio 1
+
+```{r}
+f=function(x){x^2-3*x+30}
+
+curve(f,xlim=c(-15,15),main="Una parábola",
+     ylab = expression(x^2-3*x+30), xlab = "x")
+```
+
+
+
+## Ejercicio 2
+
+
+```{r}
+f=function(x){x^2-3*x+30}
+
+plot(f,xlim=c(-15,15),main="Una parábola",
+     ylab = expression(x^2-3*x+30), xlab = "x")
+```
+
+
+
+## Ejercicio 3
+
+$ x\codty $
+
+```{r}
+
+f=function(x){y = 5.2^x}
+curve(f,xlim=c(-10,25),xlab="",ylab=expression(x^2-3*x+30),main="Gráfico semilogarítmico")
+
+
+```
+
+
+
+## Ejercicio 4
+
+
+```{r}
+f <- function(x){3*x}
+
+curve(f, xlim = c(-10,20), col = "blue", lwd = 1.5)
+curve(-3*x, lty = "dashed", col = "darkgreen", lwd = 1.5 ,add=TRUE)
+title(main = "Dos rectas", sub = "Dos rectas con pendiente opuesto")
+legend("topleft", legend = c(expression(3*x), expression(-3*x)), 
+       lwd = 2, col = c("blue", "darkgreen"), 
+       lty = c("solid", "dashed"))
+```
+
+
+## Ejercicio 5
+
+
+```{r}
+
+f=function(x){y = 5*2^x}
+curve(f,xlim=c(-10,25),xlab="",ylab=expression(x^2-3*x+30),main="Gráfico semilogarítmico")
+abline(v = 0, col = "red", lty = "dashed", lwd = 5)
+```
+
+
+## Ejercicio 6
+
+
+```{r}
+
+f = function(x){y = 5.2 ^ x}
+f2= function(x){y = 2*x + 7}
+
+curve(f, xlim = c(-10,20), col = "orange", lwd = 1.5)
+curve(f2, lty = "dashed", col = "blue", lwd = 2 ,add=TRUE)
+title(main = "Semilog function & horizontal line")
+legend("topleft", legend = c(expression(y = 5.2 ^ x), expression(y = 2*x + 7)), 
+       lwd = 2, col = c("orange", "blue"), 
+       lty = c("solid", "dashed"))
+
+```
