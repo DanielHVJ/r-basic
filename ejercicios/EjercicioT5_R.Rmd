@@ -1,0 +1,17 @@
+---
+title: "T5_R"
+author: "Daniel"
+date: "10/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+df= read.csv('../data/medals.csv', header = T)
+
+str(df)
+```
+
