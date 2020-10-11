@@ -10,8 +10,54 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-df= read.csv('../data/medals.csv', header = T)
 
-str(df)
 ```
 
+```{r}
+dim(df[df$Medal == 'Gold',])
+dim(df[df$Medal == 'Silver',])
+dim(df[df$Medal == 'Bronze',])
+```
+
+## Ejerciciio 3
+
+```{r}
+library(dplyr)
+
+df2 %>%  group_by(City) %>%
+  summarise(no_rows = length(City))
+```
+
+## Ejercicio 4
+
+```{r}
+
+df2 %>%  group_by(Event.gender) %>%
+  summarise(no_rows = length(Event.gender))
+
+
+```
+
+## Ejercicio 5
+
+```{r}
+
+df2 %>%  group_by(Year) %>%
+  summarise(no_rows = length(Year)) -> cou
+
+max(cou)
+
+```
+
+## Ejercicio 6
+
+```{r}
+
+subset(df, Year > 1960 & Year <= 1996 & Medal == 'Gold', select = c(1:9)) -> noc
+
+noc %>%  group_by(NOC) %>%
+  summarise(no_rows = length(NOC)) -> noc2
+
+
+noc2[order(noc2$no_rows,decreasing = T),c(1,2)]
+```
