@@ -31,6 +31,30 @@ moda <- function(d){
 m_t = moda(datos)
 ```
 
+# Ejercicio  de 14 hombres y 8 mujeres
+
+```{r}
+H1 = rep('H', 14)
+M1 = rep('M', 8)
+
+T1 = c(H1, M1)
+
+# Frecuencias absolulas
+
+table(T1)
+sum(table(T1))
+
+# Frecuencias Relativas
+
+prop.table(table((T1)))
+sum(prop.table(table((T1))))
+
+# Moda
+
+m_T1 = moda(T1)
+m_T1
+```
+
 La moda del data frame es: `r m_t`.
 
 # Paquete `gmodels`
@@ -44,13 +68,14 @@ CrossTable(sex, ans, prop.chisq = FALSE)
 # Sumas por filas y columnas
 ```{r}
 tt <- table(sex, ans)
-tt# Frec. absolutas
-prop.table(tt)#Frec. Rel. Global
-prop.table(tt, margin = 1)#Frec. Rel. Por sexo
-prop.table(tt, margin = 2)#Frec. Rel. Por respuesta
+tt # Frec. absolutas
+prop.table(tt) #Frec. Rel. Global
+prop.table(tt, margin = 1) #Frec. Rel. Por sexo
+prop.table(tt, margin = 2) #Frec. Rel. Por respuesta
 
 colSums(tt)
 rowSums(tt)
+
 colSums(prop.table(tt))
 rowSums(prop.table(tt))
 

@@ -18,7 +18,7 @@ sum(HairEyeColor) -> total
 El total de individuos de la tabla de datos es `r total`.
 
 ```{r}
-prop.table(HairEyeColor, margin = 3)
+prop.table(HairEyeColor, margin = 3) # margin 3 frecuencia relativa combinada
 prop.table(HairEyeColor, margin = c(1,2))
 ```
 
@@ -31,7 +31,8 @@ library(kableExtra)
 kable(HairEyeColor)
 ```
 
-```{r, results='asis'}
+```{r, results='asis'} 
+# results='asis' para tablas en codigo latex
 library(xtable)
 sex = factor(c("H", "M", "M", "M", "H", "H", "M", "M"))
 ans = factor(c("S", "N", "S", "S", "S", "N", "N", "S"))

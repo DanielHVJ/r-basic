@@ -7,6 +7,26 @@ output: html_document
 
 # Ejemplo final
 
+```{r}
+beb = read.table('../../data/EnergyDrink', header =  T)
+
+head(beb, 5)
+```
+
+```{r}
+summary(beb)
+
+apply(beb, MARGIN = 2, FUN = table)
+
+
+table(beb$sexo)
+
+ftable(beb)
+
+```
+
+
+
 ## Juntar color de ojos y pelo sin distinguir por sexo
 
 ```{r}
