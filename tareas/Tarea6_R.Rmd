@@ -1,0 +1,95 @@
+---
+title: "Tarea6_R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(MASS)
+library(dplyr)
+
+data <- birthwt%>%
+  mutate(race = ifelse(race == 1, "white", "non-white"),
+         bwt = ifelse(bwt <=2500, 'less 2500', 'higher'))
+
+
+str(data)
+head(data)
+```
+
+```{r}
+wp2 <- with(data, table(data$race, data$bwt)) %>% prop.table(margin = 1)
+wp2
+```
+
+```{r}
+t1 = table(data$race, data$bwt)
+
+plot(t1, col = c("cyan"), main = "Diagrama de Mosaico")
+
+barplot((prop.table(t1, margin = 1)), beside = T,
+        legend.text = TRUE, ylim = c(0, 0.8),
+        args.legend = list(bty = 'n', x = 'topright', ncol = 1), 
+        col = c("burlywood4", "lightblue"), 
+        main = "Frecuencias relativas de peso \n por raza de la madre")
+
+```
+
+```{r}
+smk <- with(data, table(data$smoke, data$bwt)) %>% prop.table(margin = 1)
+smk
+
+```
+
+```{r}
+
+t2 = table(data$smoke, data$bwt)
+
+plot(t2, col = c("orange2"), main = "Diagrama de Mosaico")
+
+barplot((prop.table(t2, margin = 1)), beside = T,
+        legend.text = TRUE, ylim = c(0, 0.8),
+        args.legend = list(bty = 'n', x = 'topright', ncol = 1), 
+        col = c("burlywood4", "lightblue"), 
+        main = "Frecuencias relativas de peso \n por madre fumadora")
+
+```
+```{r}
+hit <- with(data, table(data$ht, data$bwt)) %>% prop.table(margin = 1)
+hit
+```
+
+```{r}
+
+t3 = table(data$ht, data$bwt)
+
+plot(t3, col = c("green4"), main = "Diagrama de Mosaico")
+
+barplot((prop.table(t3, margin = 1)), beside = T,
+        legend.text = TRUE, ylim = c(0, 0.8),
+        args.legend = list(bty = 'n', x = 'topright', ncol = 1), 
+        col = c("burlywood4", "lightblue"), 
+        main = "Frecuencias relativas de peso \n por madre hipertensa o no")
+
+```
+
+```{r}
+ft = table(data$race, data$smoke, data$ht, data$bwt)
+
+tot <- with(data, table(data$race, data$smoke, data$ht, data$bwt)) %>% prop.table(margin = 1)
+
+tot
+
+plot(ft, col = c("green4"), main = "Diagrama de Mosaico")
+
+barplot((prop.table(t3, margin = 1)), beside = T,
+        legend.text = TRUE, ylim = c(0, 0.8),
+        args.legend = list(bty = 'n', x = 'topright', ncol = 1), 
+        col = c("burlywood4", "lightblue"), 
+        main = "Frecuencias relativas de peso \n por madre hipertensa o no")
+
+```
+
