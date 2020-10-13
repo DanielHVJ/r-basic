@@ -93,3 +93,43 @@ barplot((prop.table(t3, margin = 1)), beside = T,
 
 ```
 
+
+
+## Tarea 6 Parte 2
+
+```{r}
+# Ej 1
+alum = factor(c("Dan", "Bea", "Man", "Ser", "Alv", "Joel", "Carl", "Lui"))
+table(alum)
+
+# Ej 2
+age = c(floor(runif(10, min=20, max=49)))
+prop.table(age)
+
+# Ej 3
+we = c(floor(runif(10, min=50, max=110)))
+he = c(floor(runif(10, min=150, max=185)))
+
+table(he, we)
+
+# Ej 4
+colSums(prop.table(table(he, age), margin = 1))
+
+# Ej 5
+barplot(age, main="Age barplot", horiz=F,
+  names.arg=c('edades'))
+
+# Ej. 6
+
+gra = c(floor(runif(8, min=1, max=9)))
+pie(gra, alum, main = "Gráfico de notas",)
+
+# Ej. 7
+
+data = DNase
+library(ggplot2)
+
+ggplot() + geom_bar(data = data, aes(y=data$Run, x=data$density,fill=data$density), stat='identity', position='stack') + coord_flip()
+```
+
+
