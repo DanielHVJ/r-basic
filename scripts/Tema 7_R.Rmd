@@ -1,0 +1,80 @@
+---
+title: "Tema 7"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+gra = floor(runif(10, min=1, max=9))
+gr = c('A','R','N','S','S','A','R','R','S','S')
+
+# Frecuncias acumuladas
+cumsum(table(gr))
+
+barplot(table(gr))
+
+# Frecuencia relativa acumulada
+cumsum(table(gr))/length(gr)
+
+prop.table(cumsum(table(gr))) # peso relativo de cada var, ver el grafico
+
+# Graficos frecuencias
+barplot(table(gr))
+barplot(prop.table(table(gr)))
+barplot(cumsum(prop.table(table(gr))))
+```
+
+## Cuellos de las jirafas
+
+```{r}
+zonas = rep(c('A','B','C','D'), c(30,28, 31,43))
+long = rep(c('Corto', 'Normal', 'Largo', 'Muy largo'), c(28,30, 34,40))
+jir = data.frame(zonas, long)
+
+head(jir)
+```
+
+```{r}
+apply(table(jir), MARGIN =1, FUN = cumsum)
+
+t(apply(prop.table(table(jir), margin =1), MARGIN = 1, FUN = cumsum))
+
+
+dia = apply(prop.table(table(jir), margin =1), MARGIN = 1, FUN = cumsum)
+barplot(dia, beside = T, main='Diagrama de barras acumulado', legend = T, 
+        args.legend = list(x='bottomleft', cex=0.6))
+
+dia = apply(prop.table(table(jir), margin =1), MARGIN = 1, FUN = cumsum)
+
+barplot(((table(jir))), beside = T, main='Diagrama de barras acumulado', legend = T,         args.legend = list(x='topright', cex=0.7))
+```
+
+### EJEMPLO 5
+
+```{r}
+crabs = read.table('../data/datacrab.txt', header = T)
+crabs = crabs[,-1]
+
+int = cut(crabs$width, breaks = c(21,25,29,33,Inf), right = F, 
+          labels = c('21-25','25-29','29-33','33-Inf'))
+
+crabs$width.rank = ordered(int)
+
+table(crabs[,c(1,6)]) # se elige la primera y ultima columna`
+
+prop.table(table(crabs[,c(1,6)]), margin = 1)
+
+di = apply(prop.table(table(crabs[,c(1,6)]), margin = 1), MARGIN = 1, FUN = cumsum)
+
+
+col = c('cyan4','cyan1','blue','green1', 'red')
+barplot(di, beside = T, legend=T, ylim=c(0.1,1), col=col, 
+main = 'diagrama acumulado')
+
+barplot(t(prop.table(table(crabs[,c(1,6)]), margin = 1)), beside = T, legend=T, ylim=c(0.1,0.8), col=col, 
+main = 'diagrama acumulado')
+```
+
