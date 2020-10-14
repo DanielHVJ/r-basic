@@ -1,0 +1,50 @@
+---
+title: "Tarea8_R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data = read.table('../data/grades.txt')
+attach(data)
+str(data)
+
+round(mean(data$nota),2)
+round(median(data$nota),2)
+
+moda <- function(nota) {
+  names(which(table(data$nota)==max(table(data$nota))))
+}
+
+moda(nota)
+
+aggregate(nota~estudio, data = data, FUN = mean)
+aggregate(nota~estudio, data = data, FUN = median)
+aggregate(nota~estudio, data = data, FUN = moda)
+
+```
+
+```{r}
+ss= aggregate(nota~estudio, data = data, FUN = sd)
+ss
+```
+
+```{r}
+me= aggregate(nota~estudio, data = data, FUN = mean)
+
+boxplot(nota~estudio, data = data, col = "pink",
+        xlab = "Grupos", ylab = "Notas", main='Diagrama de cajas')
+points(me, col='darkred', pch=21)
+points(ss, col='cyan', pch=09)
+```
+
+```{r}
+library(plyr)
+
+do.call("rbind", tapply(nota, estudio, quantile, c(0.5, 0.8, 0.9)))
+```
+
+

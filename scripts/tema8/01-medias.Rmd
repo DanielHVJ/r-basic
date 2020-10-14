@@ -8,6 +8,47 @@ output: html_document
 # Medias
 
 ```{r}
+age = floor(runif(20 ,min= 25, max= 45))
+
+table(age)
+
+cumsum(prop.table(table(age)))
+
+dados = sample(1:6, 25, replace = T)
+
+
+table(dados)
+
+prop.table(table(dados))
+
+cumsum(prop.table(table(dados)))
+
+
+dados.df = data.frame(pun=1:6, Fr.abs = as.vector(table(dados)),
+                         Fr.rel = as.vector(prop.table(table(dados))),
+                         FrA.abs = as.vector(cumsum(table(dados))),
+                         FrA.rel = as.vector(cumsum(prop.table(table(dados)))))
+
+
+dados.df
+
+
+quantile(dados, 0.8)
+```
+
+```{r}
+mean(dados)
+median(dados)
+
+# MODA
+names(which(table(dados)==max(table(dados))))
+  
+
+```
+
+
+
+```{r}
 x = c(32, 45, 67, 43, 28, 17, 48, 95)
 n = length(x)
 ```
@@ -56,4 +97,42 @@ n/sum(1/x)
 min(x)
 max(x)
 ```
+
+
+
+```{r}
+# valores minimos y maximos
+range()
+
+# rango
+
+diff(range())
+
+# rango interquartil
+IQR()
+
+# varianza muestral
+var()
+
+# desviavion standard
+sd()
+
+# varianza verdadera
+n = length()
+var()*(n-1)/n
+
+# desfiacion verdadera
+sd()*sqrt((n-1)/n)
+
+```
+
+
+```{r}
+data = read.table('../../data/datacrab.txt', header = T)
+summary(data)
+str(data)
+
+summary(subset(data, color==3, c('weight','spine')))
+```
+
 
