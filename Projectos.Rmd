@@ -13,3 +13,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 1. Tarea de gráficos Tema Nº 4
+2. Histogramas 01-clases Tema 9
+3. 
