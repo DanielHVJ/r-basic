@@ -1,0 +1,72 @@
+---
+title: "Tema10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+bo = read.table('../r-basic/data/bodyfat.txt', header = T)
+bo2 = bo[c(2,4)]
+head(bo2, 4)
+```
+
+
+```{r}
+re = lm(Weight~Fat, data = bo2)
+re
+plot(bo2)
+abline(re, col='green4')
+```
+
+```{r}
+summary(re)
+```
+
+## Regresion exponencial
+
+```{r}
+de = c(1.2,3.6,12,55)
+ind = c(10,35,75,90)
+
+par(mfrow=c(1,2))
+plot(ind, de, col='orange4')
+plot(ind, de, log = 'y')
+```
+
+```{r}
+summary(lm(log10(de)~ind))
+
+i = 10^(0.0189)
+c = 10^(-0.1333)
+
+plot(ind, de, col='orange4')
+curve(i^x*c, add = T)
+```
+
+## Ejemplo 3
+
+```{r}
+t = 1:10
+v = c(1,3,9,16,64,137,477,745,990,1220)
+da = data.frame(t,v)
+
+par(mfrow=c(1,3))
+plot(da, col='orange4')
+plot(da, log = 'y')
+plot(da, log = 'xy')
+```
+
+```{r}
+summary(lm(log10(v)~log10(t), data = da))
+```
+```{r}
+i = 10^(3.4046)
+c = 10^(-0.4122)
+
+plot(da, col='orange4')
+curve((x^i)*c, add = T)
+```
+
