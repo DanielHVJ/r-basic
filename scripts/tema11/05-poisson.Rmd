@@ -17,8 +17,8 @@ Supongamos que $X$ modela el número de errores por página que tiene un valor e
 ```{r}
 l = 5
 plot(0:20, dpois(x = 0:20, lambda = l))
-ppois(0:20, l)
-qpois(0.5, 5)
+ppois(0:20, l) # probability
+qpois(0.2, 5) # quantile dist
 rpois(1000, lambda = l) -> data
 hist(data)
 ```

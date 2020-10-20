@@ -9,6 +9,17 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+
+x = seq(0, 1000, 20)
+plot(x, dexp(x,rate = 1.8)) # Funcion de distribucion
+plot(x, pexp(x, 1.8), type = "b") # Funcion de probabilidad
+qexp(0.5, 1.8)
+rexp(1000000, .18) -> data
+hist(data)
+```
+
+
 ## En `Python`
 
 ```{python}

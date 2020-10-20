@@ -20,8 +20,11 @@ TODO: escribir la FDens y la FDistr
 library(Rlab)
 n = 30
 p = 0.6
-plot(0:n, dbinom(0:n, size = n, prob = p))
-plot(0:n, pbinom(0:n, size = n, prob = p))
+dbinom(0:30, n, p)
+
+plot(0:n, dbinom(0:n, size = n, prob = p)) # funcion de densidad
+plot(0:n, pbinom(0:n, size = n, prob = p), col ='red') # funcion de proba acumu
+
 qbinom(0.5, n, p)
 qbinom(0.25, n, p)
 hist(rbinom(100000, n, p), breaks = 0:30)

@@ -24,7 +24,7 @@ dhyper(x = 0:12, m = M, n = N, k = k)
 phyper(q = 0:12, m = M, n = N, k = k)
 qhyper(p = 0.5, m = M, n = N, k = k)
 rhyper(nn = 1000, m = M, n = N, k = k) -> data
-hist(data, breaks = 8)
+hist(data, breaks = 8, col = 'green')
 ```
 
 

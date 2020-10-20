@@ -1,0 +1,25 @@
+---
+title: "Untitled"
+author: "Daniel"
+date: "19/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Rlab)
+n = 30
+p = 0.6
+dnbinom(0:30, n, p)
+
+plot(0:n, dnbinom(0:n, size = n, prob = p)) # funcion de densidad
+plot(0:n, pnbinom(0:n, size = n, prob = p), col ='red') # funcion de proba acumu
+
+qnbinom(0.5, n, p)
+qnbinom(0.25, n, p)
+hist(rnbinom(100000, n, p))
+```
+
