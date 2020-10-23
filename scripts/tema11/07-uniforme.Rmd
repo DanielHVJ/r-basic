@@ -15,8 +15,8 @@ Supongamos que $X\sim U([0,1])$ entonces podemos estudiar sus parámetros
 
 ## En `R` 
 ```{r}
-a = 0
-b = 1
+a = 1.09
+b = 2.53
 
 x = seq(-0.1, 1.1, 0.1)
 plot(x, dunif(x, min = a, max = b)) # Funcion de distribucion

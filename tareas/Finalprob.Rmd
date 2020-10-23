@@ -1,0 +1,173 @@
+---
+title: "Tarea Final"
+author: "Daniel"
+date: "20/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Rlab)
+n = 30
+p = 0.25
+
+```
+
+$$E[x]=np=30*.25= 7.5$$
+
+$$var=npq=30*.25*.75=5.625$$
+
+```{r}
+1 - dbinom(25, 30, 0.25)
+
+dbinom(15, 30, 0.25)
+
+dbinom(10, 30, 0.25)
+```
+
+## Probabilidad de accidentes
+
+```{r}
+l = 2
+plot(0:60, dpois(x = 0:60, lambda = l), 'b',col='blue')
+ppois(0:60, l) # probability
+qpois(0.5, l) # quantile dist
+dpois(0,2)
+```
+
+## 3. 
+
+Se trata de una distribución binomial con n = 15 y p = 0,4
+
+## 4
+
+```{python}
+## HYPERGEOM
+
+from scipy.stats import hypergeom
+import numpy as np
+
+[M, n, N] = [70, 10, 20]
+rv = hypergeom(M, n, N)
+x = np.arange(0, n+1)
+y = rv.pmf(x)
+
+mean, var, skew, kurt = rv.stats(moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+
+## 5
+
+```{python}
+
+from scipy.stats import binom 
+import numpy as np
+
+n = 200
+p = 0.5
+
+mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
+
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+
+## 6 Binomial
+```{python}
+from scipy.stats import binom 
+import numpy as np
+
+n = 200
+p = 0.25
+
+mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
+
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+
+## 7
+```{python}
+
+from scipy.stats import binom 
+import numpy as np
+
+n = 200
+p = 0.5
+
+mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
+
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+
+## 8
+```{python}
+from scipy.stats import hypergeom
+import numpy as np
+
+[M, n, N] = [14, 7, 4]
+rv = hypergeom(M, n, N)
+x = np.arange(0, n+1)
+y = rv.pmf(x)
+
+mean, var, skew, kurt = rv.stats(moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+
+
+## 9)
+
+Es una Poisson
+
+## 10
+
+Distribucion normal para el lanzamiento de dados, par e impar.
+
+Dado igual a 5,  Distribución geométrica (p)
+
+## 11
+
+```{r}
+a = 1.09
+b = 2.53
+
+x = seq(1,3, 0.1)
+plot(x, dunif(x, min = a, max = b)) # Funcion de distribucion
+plot(x, punif(x, a, b), type = "l") # Funcion de probabilidad
+qunif(0.5, a, b)
+```
+## 12
+
+Tiempo de servicio es exponencial
+
+```{python}
+from scipy.stats import expon
+import numpy as np
+
+
+lam = 1  # as default of poisson
+rv = expon(scale = 7/lam)
+
+mean, var, skew, kurt = rv.stats(moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+```
+

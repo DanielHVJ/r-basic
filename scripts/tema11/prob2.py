@@ -4,7 +4,7 @@ from scipy.stats import hypergeom
 import matplotlib.pyplot as plt
 import numpy as np
 
-[M, n, N] = [20, 12, 7]
+[M, n, N] = [70, 10, 20]
 rv = hypergeom(M, n, N)
 x = np.arange(0, n+1)
 y = rv.pmf(x)
@@ -22,6 +22,21 @@ ax.vlines(x,0,y, lw = 2, alpha = 0.5)
 ax.set_xlabel("Número de perros entre los 12 elegidos al azar")
 ax.set_ylabel("Distribución de probabilidad de H(13,7,12)")
 plt.show()
+
+### ---------------
+from scipy.stats import hypergeom
+import numpy as np
+
+[M, n, N] = [14, 7, 4]
+rv = hypergeom(M, n, N)
+x = np.arange(0, n+1)
+y = rv.pmf(x)
+
+mean, var, skew, kurt = rv.stats(moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
 
 ## POISSON
 
@@ -114,8 +129,8 @@ from scipy.stats import expon
 import numpy as np
 import matplotlib.pyplot as plt
 
-lam = 1.5
-rv = expon(scale = 1/lam)
+lam = 1  # as default of poisson
+rv = expon(scale = 7/lam)
 
 mean, var, skew, kurt = rv.stats(moments = 'mvsk')
 print("Media %f"%mean)

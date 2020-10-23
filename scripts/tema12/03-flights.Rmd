@@ -8,12 +8,16 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(reticulate)
+Sys.which('python')
+use_python('C/Newprograms/Anaconda/python.exe')
+
 ```
 
 ## Vuelos de NYC
 
 ```{r}
 data <- nycflights13::flights
+write.csv(data, "../../data/flights.csv")
 head(data)
 nrow(data)
 summary(data)

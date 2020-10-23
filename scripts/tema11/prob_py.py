@@ -2,7 +2,7 @@
 
 from scipy.stats import bernoulli
 import matplotlib.pyplot as plt
-p = 0.7
+p = 0.5
 mean, var, skew, kurt = bernoulli.stats(p, moments = 'mvsk')
 print("Media %f"%mean)
 print("Varianza %f"%var)
@@ -21,8 +21,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 fig, ax = plt.subplots(1,1)
-n = 7
-p = 0.4
+n = 200
+p = 0.25
 
 mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
 
